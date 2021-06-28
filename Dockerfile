@@ -46,8 +46,6 @@ RUN cp -p "$SPARK_HOME/conf/spark-defaults.conf.template" "$SPARK_HOME/conf/spar
     echo 'spark.driver.extraJavaOptions -Dio.netty.tryReflectionSetAccessible=true' >> $SPARK_HOME/conf/spark-defaults.conf && \
     echo 'spark.executor.extraJavaOptions -Dio.netty.tryReflectionSetAccessible=true' >> $SPARK_HOME/conf/spark-defaults.conf
 
-USER $NB_UID
-
 # Install pyspark
 RUN pip install findspark
 # Install pyarrow
@@ -55,5 +53,7 @@ RUN conda install -y pyarrow && \
     conda clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
+
+USER $NB_UID
 
 WORKDIR $HOME
