@@ -1,4 +1,4 @@
-FROM timsu27/general-jupyterlab:1.0.1-python3.8
+FROM timsu27/general-jupyterlab:1.0.4-python3.8
 
 #Fix DL4006
 #SHELL ["/bin/bash", "-o", "pipefail", "-c"]
